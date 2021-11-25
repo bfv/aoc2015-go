@@ -20,9 +20,9 @@ func solve(lines []string) (int, int) {
 
 	for _, line := range lines {
 		p := getInts(line)
-		p1 := 2 * (p[0]*p[1] + p[0]*p[2] + p[1]*p[2])
-		p2 := getSmallestArea(p)
-		a += p1 + p2
+		surface := 2 * (p[0]*p[1] + p[0]*p[2] + p[1]*p[2])
+		slack := getSmallestArea(p)
+		a += surface + slack
 	}
 
 	return a, b
