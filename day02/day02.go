@@ -16,13 +16,14 @@ func main() {
 }
 
 func solve(lines []string) (int, int) {
-	a, b := 0, -1
+	a, b := 0, 0
 
 	for _, line := range lines {
 		p := getInts(line)
 		surface := 2 * (p[0]*p[1] + p[0]*p[2] + p[1]*p[2])
-		slack := getSmallestArea(p)
+		slack, ribbon := getSmallestAreaAndRibbon(p)
 		a += surface + slack
+		b += ribbon + (p[0] * p[1] * p[2])
 	}
 
 	return a, b
@@ -38,7 +39,7 @@ func getInts(line string) []int {
 	return ints[:]
 }
 
-func getSmallestArea(sides []int) int {
+func getSmallestAreaAndRibbon(sides []int) (int, int) {
 
 	var first, second = math.MaxInt, math.MaxInt
 	for _, v := range sides {
@@ -49,5 +50,5 @@ func getSmallestArea(sides []int) int {
 			second = v
 		}
 	}
-	return first * second
+	return first * second, 2 * (first + second)
 }
