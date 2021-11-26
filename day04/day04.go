@@ -23,14 +23,14 @@ func main() {
 
 func solve(input string) int {
 	var i int
-	var a int
-	for a == 0 {
+
+	for {
 		hash := md5.Sum([]byte(input + strconv.Itoa(i)))
 		s := hex.EncodeToString(hash[:])
 		if strings.HasPrefix(s, "00000") {
-			a = i
+			break
 		}
 		i++
 	}
-	return a
+	return i
 }
