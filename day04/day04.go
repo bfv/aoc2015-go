@@ -27,7 +27,7 @@ func solve(input string) int {
 	for {
 		hash := md5.Sum([]byte(input + strconv.Itoa(i)))
 		s := hex.EncodeToString(hash[:])
-		if strings.HasPrefix(s, "00000") {
+		if strings.HasPrefix(s, "000000") { // a is 5 zero's, b is 6 zero's
 			break
 		}
 		i++
