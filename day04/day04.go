@@ -6,15 +6,19 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
-	var b int
+	//var b int
 
 	input := "yzbqklnj"
-	a := solve(input)
 
-	fmt.Printf("day 02, a: %v, b: %v", a, b)
+	start := time.Now()
+	a := solve(input)
+	ta := time.Since(start)
+
+	fmt.Printf("day 02, a: %v, t: %v", a, ta)
 }
 
 func solve(input string) int {
